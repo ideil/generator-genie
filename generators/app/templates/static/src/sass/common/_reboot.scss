@@ -1,0 +1,55 @@
+//# Reboot
+//
+//*
+
+body {
+    fill: $body-color;
+
+    @if $font-smothing {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+
+//## Transitions
+//
+//*
+
+button,
+.btn,
+a {
+    transition:
+        color $transition,
+        background $transition,
+        border-color $transition,
+        fill $transition;
+}
+
+
+//## Text
+//
+//*
+
+//** text selection
+// ::selection {
+//     background-color: lighten(theme-color("primary"), 50%);
+// }
+
+
+//## Forms
+//
+//*
+
+textarea {
+    resize: vertical;
+}
+
+
+//## SVG
+//
+//*
+
+svg {
+    fill: inherit;
+}

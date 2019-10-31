@@ -1,0 +1,11 @@
+# Customs data
+
+CUSTOMS:
+  _tpl:
+    isPublic: true
+    no: 'sa'
+    id: '__tpl'
+    title: 'Custom'
+    styles:
+      - 'sa-tpl'
+    # scripts:

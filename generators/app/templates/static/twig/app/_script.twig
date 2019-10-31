@@ -1,0 +1,9 @@
+{% set isScriptDev = script starts with 'dev' %}
+{% set containFolder = script matches '/\//' %}
+{% set isPub = IS_PUB and not isScriptDev %}
+{# {% set folder = isScriptDev or IS_PUB ? '' : 'build/' %} #}
+
+{% if IS_DEV or isPub %}
+    {# <script src="{{ PATH.js ~ folder ~ script ~ '.js' }}"></script> #}
+    <script src="{{ PATH.js ~ script ~ '.js' }}"></script>
+{% endif %}

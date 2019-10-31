@@ -1,0 +1,43 @@
+# Aplication Base Data
+
+APP:
+  title: 'App Title'
+  lang: 'uk'
+  styles:
+    - 'bs'
+  scripts:
+    - 'develop/misc'
+  # preload:
+  #   img:
+  #     # - src: 'single.svg'
+  #     #   src1x: '1x.svg'
+  #     #   src2x: '@2x.svg'
+  #     #   src3x: '@3x.svg'
+  #     - src1x: 'cursor/default.png'
+  #       src2x: 'cursor/default@2x.png'
+  #       # src3x: 'cursor/default@3x.png'
+
+
+PAGES:
+  index:
+    no: '00'
+    id: 'index'
+    styles:
+      - 'common'
+
+  home:
+    isPublic: false
+    isCritical: false
+    no: '01'
+    id: 'home'
+    title: 'Homepage Title'
+    styles:
+      - 'common'
+    # scripts:
+    #   - 'common'
+    # preload:
+    #   img:
+    #     - src: 'file.svg'
+    #       src1x: '1x.jpg'
+    #       src2x: '@2x.jpg'
+    #       src3x: '@3x.jpg'

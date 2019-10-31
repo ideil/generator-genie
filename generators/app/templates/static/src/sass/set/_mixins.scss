@@ -1,0 +1,174 @@
+//# Mixins
+//
+//*
+
+
+//## Misc
+//
+//*
+
+@mixin link-pseudo-cover() {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+//## Typography & Grid
+//
+//*
+
+@function spacer($key: 2, $factor: 1) {
+    @return map-get($spacers, $key) * $factor;
+}
+
+@function gap($key: 2, $factor: 1) {
+    @return map-get($gaps, $key) * $factor;
+}
+
+
+//## Fonts
+//
+//*
+
+@mixin font($family, $path, $weight: $fw-normal, $style: normal) {
+    @font-face {
+        font-family: $family;
+        src: url('../fonts/' + $path + '.woff2') format('woff2'),
+             url('../fonts/' + $path + '.woff') format('woff');
+        font-weight: $weight;
+        font-style: $style;
+        font-display: fallback;
+    }
+}
+
+//## Graphics
+//
+//*
+
+//### Filters
+
+@mixin filter($state) {
+    @if $state == 'black' {
+        filter: brightness(0);
+    }
+
+    @if $state == 'white' {
+        filter: brightness(0) invert(1);
+    }
+
+    @if $state == 'off' {
+        filter: none;
+    }
+}
+
+//### Sizing
+
+@mixin scale-rect($map, $value, $side: 'width') {
+    $width: map-get($map, 'width');
+    $height: map-get($map, 'height');
+
+    @if $side == 'width' {
+        width: round-to($value);
+        height: scale-size($map, $value, $side);
+    }
+
+    @if $side == 'height' {
+        width: scale-size($map, $value, $side);
+        height: round-to($value);
+    }
+}
+
+//### SVG
+
+@mixin svg($map, $el: null) {
+    $pseudoEl: map-get($map, 'el');
+    @if $el {
+        $pseudoEl: $el;
+    }
+    @if not $pseudoEl {
+        $pseudoEl: 'before';
+    }
+
+    $size: map-get($map, 'size');
+    $width: map-get($map, 'width');
+    $height: map-get($map, 'height');
+
+    $scaleSize: map-get($map, 'scaleSize');
+    $scaleWidth: map-get($map, 'scaleWidth');
+    $scaleHeight: map-get($map, 'scaleHeight');
+
+    @if $size {
+        $width: $size;
+        $height: $size;
+    }
+
+    @if $scaleSize {
+        $width: $scaleSize;
+        $height: $scaleSize;
+    }
+
+    @if $scaleWidth {
+        $width: $scaleWidth;
+        $height: $scaleHeight;
+    }
+
+    &:#{ $pseudoEl } {
+        @include unit(width, get-unit($width));
+        @include unit(height, get-unit($height));
+
+        content: '';
+        display: block;
+        background: url(svg-simple($map)) no-repeat 50% 50%;
+    }
+}
+
+
+//## Misc
+//
+//*
+
+//### Scrollbars
+
+@mixin scrollbars-hide() {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// //### Progress
+// @mixin progress-bar($color) {
+//     //** Bar (Box)
+
+//     //*** Firefox/IE10+
+//     background: $color;
+
+//     //*** Blink/Webkit/
+//     &::-webkit-progress-bar {
+//         background: $color;
+//     }
+
+//     //*** Firefox
+//     &::-moz-progress-bar {
+//         background: $color;
+//     }
+// }
+
+// @mixin progress-value($color) {
+//     //** Value (indicator)
+
+//     //*** IE10+
+//     color: $color;
+
+//     //*** Blink/Webkit/Firefox
+//     &::-webkit-progress-value {
+//         background: $color;
+//     }
+// }

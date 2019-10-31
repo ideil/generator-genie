@@ -1,0 +1,153 @@
+//# Application Variables
+//
+//*
+
+$MIX_IS_PUB: false !default;
+
+$path-svg: '../svg/';
+$path-img: '../img/';
+
+@if $MIX_IS_PUB {
+    //* Image path must be relative to *.scss files to make `processCssUrls` work
+    $path-svg: '../../svg/';
+    $path-img: '../../img/';
+}
+
+
+//## Global
+//
+//*
+
+$font-smothing: true;
+
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $white;
+$body-color: $gray-900;
+
+
+//## Links
+//
+//*
+
+$link-color: $body-color;
+// $link-decoration: none !default;
+$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-decoration: none;
+
+
+//## Type
+//
+//*
+
+$ff-serif: Arial;
+$font-family-base: $ff-serif, $font-family-sans-serif;
+
+//###
+
+$fw-normal: 400;
+$fw-bold: 700;
+$fw-bolder: bolder;
+$fw-base: $fw-normal;
+
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: $fw-normal;
+$font-weight-bold: $fw-bold;
+$font-weight-bolder: $fw-bolder;
+$font-weight-base: $fw-base;
+
+//###
+
+$fs-base: 1rem;
+$fs-lg: $fs-base * 1.25;
+$fs-sm: $fs-base * .875;
+
+$font-size-base: $fs-base;
+$font-size-lg: $fs-lg;
+$font-size-sm: $fs-sm;
+
+//###
+
+$lh-base: 1.5;
+
+$line-height-base: $lh-base;
+
+//###
+
+$fs-h1: $fs-base * 2.5;
+$fs-h2: $fs-base * 2;
+$fs-h3: $fs-base * 1.75;
+$fs-h4: $fs-base * 1.5;
+$fs-h5: $fs-base * 1.25;
+$fs-h6: $fs-base;
+
+$h1-font-size: $fs-h1;
+$h2-font-size: $fs-h2;
+$h3-font-size: $fs-h3;
+$h4-font-size: $fs-h4;
+$h5-font-size: $fs-h5;
+$h6-font-size: $fs-h6;
+
+//###
+
+$paragraph-margin-bottom: spacer();
+$headings-margin-bottom: spacer();
+
+//### Spacers
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3)
+);
+
+
+//## Grid
+//
+//**
+
+//### Gaps
+
+$gap: $grid-gutter-width;
+$gaps: (
+  0: 0,
+  1: ($gap * 0.25),
+  2: ($gap * 0.5),
+  3: ($gap),
+  4: ($gap * 1.5),
+  5: ($gap * 2),
+);
+
+//### Breakpoints
+
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 425px,
+//   md: 768px,
+//   lg: 1024px,
+//   xl: 1280px,
+// );
+
+//### Containers
+
+// $container-max-widths: (
+//   sm: 400px,
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1140px,
+// );
+
+
+//## Transitions
+//
+//*
+
+$transition: 0.15s;

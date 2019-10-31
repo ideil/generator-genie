@@ -1,0 +1,20 @@
+{% for script in APP.scripts %}
+    {% include '_script.twig' %}
+{% endfor %}
+
+{% for script in PAGE.scripts %}
+    {% include '_script.twig' %}
+{% endfor %}
+
+{% for script in CUSTOM.scripts %}
+    {% include '_script.twig' %}
+{% endfor %}
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<!--
+<script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+ -->

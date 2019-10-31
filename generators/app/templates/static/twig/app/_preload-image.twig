@@ -1,0 +1,17 @@
+{% set pathSufix = path ?: 'img' %}
+
+{% if image.src %}
+    <link rel="preload" href="{{ PATH[pathSufix] ~ image.src }}" as="image">
+{% endif %}
+
+{% if image.src1x %}
+    <link rel="preload" href="{{ PATH[pathSufix] ~ image.src1x }}" as="image" media="(-webkit-device-pixel-ratio: 1) and (max-resolution: 191dpi)">
+{% endif %}
+
+{% if image.src2x %}
+    <link rel="preload" href="{{ PATH[pathSufix] ~ image.src2x }}" as="image" media="(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)">
+{% endif %}
+
+{% if image.src3x %}
+    <link rel="preload" href="{{ PATH[pathSufix] ~ image.src3x }}" as="image" media="(-webkit-min-device-pixel-ratio: 3) and (min-resolution: 350dpi)">
+{% endif %}

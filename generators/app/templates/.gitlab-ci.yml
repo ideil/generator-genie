@@ -1,0 +1,15 @@
+pages:
+  script:
+  - mkdir .public
+  - mkdir .public/html
+  - cp -r static/html/pages .public/html
+  - mkdir .public/src
+  - cp -r static/src/css .public/src
+  - cp -r static/src/zzz .public/src
+  - cp -r static/pub .public
+  - mv .public public
+  artifacts:
+    paths:
+    - public
+  only:
+  - gitlab-ci

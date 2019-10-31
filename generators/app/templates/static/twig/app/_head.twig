@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title>{{ PAGE.no ~ ' ' ~ PAGE.id ~ ' — ' ~ APP.title }}</title>
+
+<meta name="description" content="">
+<meta name="viewport" content="viewport-fit=cover, initial-scale=1, shrink-to-fit=no">
+{# <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> #}
+
+{# Favicon #}
+<!-- <link rel="manifest" href="site.webmanifest"> -->
+<!-- <link rel="apple-touch-icon" href="icon.png"> -->
+<!-- Place favicon.ico in the root directory -->
+
+
+{# 100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i #}
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900&amp;subset=cyrillic" rel="stylesheet">
+
+{# {% for image in APP.preload.img %}
+    {% include '_preload-image.twig' %}
+{% endfor %}
+
+{% for image in PAGE.preload.img %}
+    {% include '_preload-image.twig' %}
+{% endfor %}
+
+{% for image in PAGE.preload.zzz %}
+    {% include '_preload-image.twig' with { path: 'zzz' } %}
+{% endfor %} #}
+
+{## Critical FOFT (style attr) w/ preload #}
+{# <link rel="preload" href="{{ CRITICAL.path }}/fonts/ubuntu/r.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ CRITICAL.path }}/fonts/ubuntu/l.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ CRITICAL.path }}/fonts/ubuntu/m.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ CRITICAL.path }}/fonts/ubuntu/b.woff2" as="font" type="font/woff2" crossorigin> #}
+
+{## Async CSS #}
+{% for style in APP.styles %}
+    <link rel="stylesheet" href="{{ PATH.css ~ style }}.css">
+    {# <link rel="preload" href="{{ PATH.css ~ style }}.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> #}
+{% endfor %}
+{% for style in PAGE.styles %}
+    <link rel="stylesheet" href="{{ PATH.css ~ style }}.css">
+    {# <link rel="preload" href="{{ PATH.css ~ style }}.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> #}
+{% endfor %}
+{## Custom Component CSS #}
+{% for style in CUSTOM.styles %}
+    <link rel="stylesheet" href="{{ PATH.css ~ style }}.css">
+{% endfor %}
+{## Develop Component CSS #}
+{% if IS_DEV %}
+    <link rel="stylesheet" href="{{ PATH.css }}dev.css">
+{% endif %}
+
+{#** No JS fallback #}
+{# <noscript><link rel="stylesheet" href="/src/css/*.css"></noscript>  #}
+
+{## Polyfill [rel=preload] for CSS #}
+{#<script>{% include '../../pub/js/vendor/preload.js' %}</script>#}
+
+{% if PAGE.isCritical %}
+    <!-- critical: css -->
+{% endif %}

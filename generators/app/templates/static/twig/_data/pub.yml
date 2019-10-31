@@ -1,0 +1,10 @@
+# Production
+
+IS_PUB: true
+
+PATH:
+  src: '/pub/'
+  css: '/pub/css/'
+  img: '/pub/img/'
+  js: '/pub/js/'
+  zzz: '/src/zzz/'

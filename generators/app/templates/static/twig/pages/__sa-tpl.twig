@@ -1,0 +1,7 @@
+{% extends '../templates/_custom.twig' %}
+
+{% set PAGE = CUSTOMS.__tpl %}
+
+{% block main %}
+    {% include '../customs/' ~ PAGE.id ~ '.twig' %}
+{% endblock %}
