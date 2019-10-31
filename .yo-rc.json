@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Serhii Vlasiuk",
+      "authorEmail": "in.serhii@gmail.com",
+      "authorUrl": "https://gsusg.github.io/"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "generator-genie",
+  "version": "0.0.0",
+  "description": "Generates an environment for web development",
+  "homepage": "https://www.ideil.com/",
+  "author": {
+    "name": "ideil."
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "environment",
+    "web",
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "eslint-config-crockford": "^2.0.0",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^1.7.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "yeoman-generator": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ideil/generator-genie.git"
+  },
+  "license": "MIT"
+}
