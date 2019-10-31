@@ -25,7 +25,7 @@ yo genie
 
 ## License
 
-MIT © [Serhii Vlasiuk](https://gsusg.github.io/)
+MIT © [ideil.](https://www.ideil.com/)
 
 
 [npm-image]: https://badge.fury.io/js/generator-genie.svg
