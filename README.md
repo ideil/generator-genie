@@ -30,7 +30,7 @@ MIT © [ideil.](https://www.ideil.com/)
 
 [npm-image]: https://badge.fury.io/js/generator-genie.svg
 [npm-url]: https://npmjs.org/package/generator-genie
-[travis-image]: https://travis-ci.com/gsusg/generator-genie.svg?branch=master
-[travis-url]: https://travis-ci.com/gsusg/generator-genie
-[daviddm-image]: https://david-dm.org/gsusg/generator-genie.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/gsusg/generator-genie
+[travis-image]: https://travis-ci.com/ideil/generator-genie.svg?branch=master
+[travis-url]: https://travis-ci.com/ideil/generator-genie
+[daviddm-image]: https://david-dm.org/ideil/generator-genie.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/ideil/generator-genie
