@@ -18,7 +18,7 @@
   "devDependencies": {
     "eslint-config-crockford": "^2.0.0",
     "yeoman-assert": "^3.1.0",
-    "yeoman-test": "^1.7.0"
+    "yeoman-test": "^2.0.0"
   },
   "engines": {
     "npm": ">= 4.0.0"
