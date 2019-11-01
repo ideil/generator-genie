@@ -10,12 +10,12 @@ module.exports = class extends Generator {
         super(args, opts);
 
         this.genie = {
-            __: require(this.templatePath('build/paths')),
+            __: require(this.templatePath('__g__build/paths')),
 
             copyAll: (Files) => {
                 Files.forEach(file => {
                     this.fs.copy(
-                        this.templatePath(file),
+                        this.templatePath(`__g__${file}`),
                         this.destinationPath(file)
                     );
                 });
