@@ -15,12 +15,14 @@ describe('generator-genie:app', () => {
 
     it('creates files', () => {
         assert.file([
-            'README.md',
-            'LICENSE.md',
             '.editorconfig',
-            'package.json',
+            '.eslintrc',
+            '.gitignore',
+            '.gitlab-ci.yml',
             '.jshintrc',
             'webpack.mix.js',
+            'README.md',
+            'LICENSE.md',
         ]);
     });
 });
