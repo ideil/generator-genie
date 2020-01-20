@@ -28,8 +28,6 @@ const
     Config = require('./build/config'),
 
     wpConfig = {
-        devtool: IS_PUB || IS_BUILD ? false : 'inline-source-map',
-
         // externals: {
         //     jquery: 'jQuery', //** `import $ from 'jquery';` in your script
         //     three: 'three',
@@ -38,7 +36,7 @@ const
         resolve: {
             alias: {
                 '@js': path.resolve(__dirname, __.RScripts),
-                '@class': path.resolve(__dirname, __.RScripts, '_class'),
+                '@plugin': path.resolve(__dirname, __.RScripts, '_plugins'),
                 '@vendor': path.resolve(__dirname, __.RScripts, '_vendor'),
             },
         },
@@ -77,6 +75,7 @@ mix
     .webpackConfig(wpConfig)
     .options(mixConfig)
     .setPublicPath(__.Root)
+    .sourceMaps(!IS_PUB || !IS_BUILD, 'inline-source-map')
     .disableSuccessNotifications();
 
 
@@ -106,8 +105,8 @@ if (!IS_GULP) {
         scssRoot = __.RSass,
         ScssEntries =
             IS_PUB ?
-                glob.sync(path.join(__.RSass, '**/!(_|bootstrap)*.scss')) :
-                glob.sync(path.join(__.RSass, '**/!(_|bootstrap|united)*.scss')),
+                glob.sync(path.join(__.RSass, '**/!(_)*.scss')) :
+                glob.sync(path.join(__.RSass, '**/!(_|united)*.scss')),
         scssOutput = IS_PUB ? __.MStylesP : __.MStylesD;
 
     ScssEntries.forEach(file => {

@@ -12,10 +12,12 @@
 <!-- <link rel="apple-touch-icon" href="icon.png"> -->
 <!-- Place favicon.ico in the root directory -->
 
+{# Vendor Fonts Link #}
 
-{# 100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i #}
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900&amp;subset=cyrillic" rel="stylesheet">
+{# Static Fonts Preload Link #}
+{# <link rel="preload" href="{{ CRITICAL.path }}/fonts/font.woff2" as="font" type="font/woff2" crossorigin>
 
+{# Images Preload #}
 {# {% for image in APP.preload.img %}
     {% include '_preload-image.twig' %}
 {% endfor %}
@@ -27,12 +29,6 @@
 {% for image in PAGE.preload.zzz %}
     {% include '_preload-image.twig' with { path: 'zzz' } %}
 {% endfor %} #}
-
-{## Critical FOFT (style attr) w/ preload #}
-{# <link rel="preload" href="{{ CRITICAL.path }}/fonts/ubuntu/r.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{{ CRITICAL.path }}/fonts/ubuntu/l.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{{ CRITICAL.path }}/fonts/ubuntu/m.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{{ CRITICAL.path }}/fonts/ubuntu/b.woff2" as="font" type="font/woff2" crossorigin> #}
 
 {## Async CSS #}
 {% for style in APP.styles %}

@@ -7,7 +7,7 @@
 //
 //*
 
-@function get-unit($value) {
+@function get-num($value) {
     @return $value / ($value * 0 + 1);
 }
 
@@ -18,7 +18,7 @@
         $factor: $factor * 10;
     }
 
-    @return (round(get-unit($value) * $factor) / $factor) * 100%;
+    @return (round(get-num($value) * $factor) / $factor) * 100%;
 }
 
 @function round-to($value, $points: 2, $mode: 'round') {
@@ -71,17 +71,29 @@
 //
 //*
 
-@function shade($key: 1) {
-    @return map-get($grays, $key + '00');
+@function shade($key: 1, $map: $grays) {
+    @return map-get($map, $key + '00');
 }
 
 
-//## Type & Grid
+//## Typography & Grid
 //
 //*
 
 @function box($key: lg) {
     @return map-get($container-max-widths, $key);
+}
+
+@function gap($key: 2, $factor: 1) {
+    @return map-get($gaps, $key) * $factor;
+}
+
+@function spacer($key: 2, $factor: 1) {
+    @return map-get($spacers, $key) * $factor;
+}
+
+@function fs-h($index) {
+    @return map-get($headings-font-size, $index);
 }
 
 
@@ -103,7 +115,7 @@
 }
 
 @function svg-base($content, $width, $height) {
-    @return svg-to-css("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 #{ get-unit($width) } #{ get-unit($height) }'>#{ $content }</svg>");
+    @return svg-to-css("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 #{ get-num($width) } #{ get-num($height) }'>#{ $content }</svg>");
 }
 
 @function svg-simple($map, $color: null, $path: null) {
@@ -112,11 +124,11 @@
     $height: null;
 
     @if $size {
-        $width: get-unit($size);
-        $height: get-unit($size);
+        $width: get-num($size);
+        $height: get-num($size);
     } @else {
-        $width: get-unit(map-get($map, 'width'));
-        $height: get-unit(map-get($map, 'height'));
+        $width: get-num(map-get($map, 'width'));
+        $height: get-num(map-get($map, 'height'));
     }
 
     @if not $path {

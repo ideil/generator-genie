@@ -85,6 +85,7 @@ module.exports = class extends Generator {
             this.destinationPath('README.md'),
             {
                 title: startCase(this.props.name),
+                description: this.props.description,
                 author: this.props.author,
                 authorURL: this.props.authorURL,
             }
@@ -161,7 +162,7 @@ module.exports = class extends Generator {
             bsMain = bsMain.replace(`// @import "${entry}`, `@import "${entry}`);
         });
         bsMain = bsMain.replace(/@import "/g, '@import "~bootstrap/scss/');
-        bsMain = bsMain.replace('// @import', '@import "set/entry";\n// @import');
+        bsMain = bsMain.replace('// @import', '@import "set/a-set";\n// @import');
 
         this.fs.write(this.destinationPath(this.genie.__.RSass + '/bs.scss'), bsMain);
 

@@ -18,7 +18,7 @@
                         {% include '../misc/_link.twig' with {
                             PID: page.id,
                             linkTitle: page.id|capitalize ~ ' (' ~ page.no ~ ')',
-                            linkClass: '',
+                            linkClass: [],
                             isLinkDisabled: not page.isPublic,
                         } %}
                     </li>

@@ -5,6 +5,7 @@ APP:
   lang: 'uk'
   styles:
     - 'bs'
+    - 'common'
   scripts:
     - 'develop/misc'
   # preload:
@@ -31,8 +32,8 @@ PAGES:
     no: '01'
     id: 'home'
     title: 'Homepage Title'
-    styles:
-      - 'common'
+    # styles:
+    #   - 'customs/'
     # scripts:
     #   - 'common'
     # preload:

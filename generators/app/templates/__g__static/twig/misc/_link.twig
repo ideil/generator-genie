@@ -1,10 +1,26 @@
+{# Link #}
+
+{## Base #}
+{% set pageCurrent = PAGE.id == PID %}
+
 {% set linkData = PAGES[PID] %}
 {% set linkDataTitle = linkData.navTitle ?: linkData.title|default('Link') %}
 
+{## Class Attribute #}
+{% set attrClass = [] %}
+{% if linkClass %}
+    {% set attrClass = attrClass|merge(linkClass) %}
+{% endif %}
+{% if linkActiveClass and pageCurrent %}
+    {% set attrClass = attrClass|merge([linkActiveClass]) %}
+{% endif %}
+
+{## Href Attribute #}
 {% set href %}
     {% if not isLinkDisabled %}
         href="{{ PID starts with '#' ? PID : linkData.no ~ '-' ~ linkData.id ~ '.html' }}"
     {% endif %}
 {% endset %}
 
-<a{{ href }}{{ linkClass ? ' class="' ~ linkClass ~ '"' }}{{ linkAttr ? ' ' ~ linkAttr }}>{{ linkTitle ?: linkDataTitle }}</a>
+{## Print #}
+<a{{ href }}{{ attrClass.length ? ' class="' ~ attrClass.join(' ') ~ '"' }}{{ pageCurrent ? ' aria-current=page' }}{{ linkAttr ? ' ' ~ linkAttr }}>{{ linkIcon ?: linkIcon }}{{ linkTitle ?: linkDataTitle }}</a>

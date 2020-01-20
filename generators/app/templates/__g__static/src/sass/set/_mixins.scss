@@ -19,40 +19,11 @@
 }
 
 
-//## Typography & Grid
-//
-//*
-
-@function spacer($key: 2, $factor: 1) {
-    @return map-get($spacers, $key) * $factor;
-}
-
-@function gap($key: 2, $factor: 1) {
-    @return map-get($gaps, $key) * $factor;
-}
-
-
-//## Fonts
-//
-//*
-
-@mixin font($family, $path, $weight: $fw-normal, $style: normal) {
-    @font-face {
-        font-family: $family;
-        src: url('../fonts/' + $path + '.woff2') format('woff2'),
-             url('../fonts/' + $path + '.woff') format('woff');
-        font-weight: $weight;
-        font-style: $style;
-        font-display: fallback;
-    }
-}
-
 //## Graphics
 //
 //*
 
 //### Filters
-
 @mixin filter($state) {
     @if $state == 'black' {
         filter: brightness(0);
@@ -68,7 +39,6 @@
 }
 
 //### Sizing
-
 @mixin scale-rect($map, $value, $side: 'width') {
     $width: map-get($map, 'width');
     $height: map-get($map, 'height');
@@ -85,7 +55,6 @@
 }
 
 //### SVG
-
 @mixin svg($map, $el: null) {
     $pseudoEl: map-get($map, 'el');
     @if $el {
@@ -119,8 +88,8 @@
     }
 
     &:#{ $pseudoEl } {
-        @include unit(width, get-unit($width));
-        @include unit(height, get-unit($height));
+        @include unit(width, get-num($width));
+        @include unit(height, get-num($height));
 
         content: '';
         display: block;
@@ -133,8 +102,12 @@
 //
 //*
 
-//### Scrollbars
+//### Touch Scroll
+@mixin scroll-touch() {
+    -webkit-overflow-scrolling: touch;
+}
 
+//### Scrollbars
 @mixin scrollbars-hide() {
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -143,7 +116,7 @@
     }
 }
 
-// //### Progress
+//### Progress
 // @mixin progress-bar($color) {
 //     //** Bar (Box)
 
@@ -172,3 +145,50 @@
 //         background: $color;
 //     }
 // }
+
+//### Fonts
+// @mixin font($family, $path, $weight: $fw-normal, $style: normal) {
+//     @font-face {
+//         font-family: $family;
+//         src: url('../fonts/' + $path + '.woff2') format('woff2'),
+//              url('../fonts/' + $path + '.woff') format('woff');
+//         font-weight: $weight;
+//         font-style: $style;
+//         font-display: fallback;
+//     }
+// }
+
+
+//## Media Screens
+//
+//*
+
+@mixin screen($min: null, $max: false) {
+    $baseValue: lg;
+    $minValue: $min;
+    $maxValue: $max;
+
+    @if $minValue == null {
+        $minValue: $baseValue;
+    }
+
+    @if $maxValue == null {
+        $maxValue: $baseValue;
+    }
+
+    @if $minValue and not $maxValue {
+        @media (min-width: screen($minValue)) {
+            @content;
+        }
+    } @else if not $minValue and $maxValue {
+        @media (max-width: screen($maxValue, true)) {
+            @content;
+        }
+    } @else if $minValue and $maxValue {
+        @media (min-width: screen($minValue)) and (max-width: screen($maxValue, true)) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
