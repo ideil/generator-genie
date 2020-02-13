@@ -59,7 +59,7 @@ const
             images: __.MImages,
             // images: '../',
             // images: 'pub/img',
-            // fonts: 'fonts',
+            fonts: __.MFonts,
         },
 
         // postCss: [require('postcss-preset-env')({ stage: 2 })],
@@ -199,7 +199,7 @@ if (IS_PUB) {
             path.join(__.MScripts, 'vendor/preload.js')
         )
         .copyR({
-            input: path.join(__.RImagesP, '_html'),
+            input: path.join(__.RImagesP, 'html'),
             pattern: '**/*.{jp?(e|)g,png,gif,webp,svg}',
             output: __.RImagesD,
         })
@@ -209,10 +209,9 @@ if (IS_PUB) {
             ],
             extensions: ['twig'],
             whitelistPatterns: [
-                /^t-color-dark/,
-                /^c-section-dark/,
-                /^a-/,
-                /iframe/,
+                // /^some-class-name/,
+                // /^by-prefix-/,
+                // /tag/,
             ],
         }).then(stats => {
             if (!MERGE_NON_ADJACENT_CSS_RULES && !IS_PUB) return;

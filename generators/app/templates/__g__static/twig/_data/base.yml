@@ -4,6 +4,7 @@ APP:
   title: 'App Title'
   lang: 'uk'
   styles:
+    - 'root'
     - 'bs'
     - 'common'
   scripts:

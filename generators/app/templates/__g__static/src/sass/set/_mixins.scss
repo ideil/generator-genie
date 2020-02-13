@@ -147,16 +147,16 @@
 // }
 
 //### Fonts
-// @mixin font($family, $path, $weight: $fw-normal, $style: normal) {
-//     @font-face {
-//         font-family: $family;
-//         src: url('../fonts/' + $path + '.woff2') format('woff2'),
-//              url('../fonts/' + $path + '.woff') format('woff');
-//         font-weight: $weight;
-//         font-style: $style;
-//         font-display: fallback;
-//     }
-// }
+@mixin font($family, $path, $weight: $fw-normal, $style: $fw-normal) {
+    @font-face {
+        font-family: $family;
+        src: url($path-fonts + $path + '.woff2') format('woff2'),
+             url('../fonts/' + $path + '.woff') format('woff');
+        font-weight: $weight;
+        font-style: $style;
+        font-display: fallback;
+    }
+}
 
 
 //## Media Screens

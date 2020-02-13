@@ -5,6 +5,6 @@ IS_DEV: true
 PATH:
   src: '../../src/'
   css: '../../src/css/'
-  img: '../../src/img/_html/'
+  img: '../../src/img/html/'
   js: '../../pub/js/'
   zzz: '../../src/zzz/'

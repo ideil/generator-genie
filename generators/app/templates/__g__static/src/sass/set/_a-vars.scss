@@ -4,13 +4,13 @@
 
 $MIX_IS_PUB: false !default;
 
-$path-svg: '../svg/';
 $path-img: '../img/';
+$path-fonts: '../fonts/';
 
 @if $MIX_IS_PUB {
     //* Image path must be relative to *.scss files to make `processCssUrls` work
-    $path-svg: '../../svg/';
     $path-img: '../../img/';
+    $path-fonts: '../../fonts/';
 }
 
 
@@ -48,16 +48,21 @@ $font-family-base: $ff-serif, $font-family-sans-serif;
 
 //###
 
+$fw-thin: 100;
+$fw-light: 300;
 $fw-normal: 400;
+$fw-medium: 500;
 $fw-bold: 700;
-$fw-bolder: bolder;
+$fw-black: 900;
+
 $fw-base: $fw-normal;
 
-$font-weight-lighter: lighter;
-$font-weight-light: 300;
+// $font-weight-lighter: lighter;
+$font-weight-light: $fw-light;
 $font-weight-normal: $fw-normal;
 $font-weight-bold: $fw-bold;
-$font-weight-bolder: $fw-bolder;
+// $font-weight-bolder: bolder;
+
 $font-weight-base: $fw-base;
 
 //###
@@ -92,11 +97,6 @@ $h4-font-size: $fs-h4;
 $h5-font-size: $fs-h5;
 $h6-font-size: $fs-h6;
 
-//###
-
-$paragraph-margin-bottom: spacer();
-$headings-margin-bottom: spacer();
-
 //### Spacers
 
 $spacer: 1rem;
@@ -108,6 +108,9 @@ $spacers: (
   4: ($spacer * 1.5),
   5: ($spacer * 3)
 );
+
+$paragraph-margin-bottom: spacer();
+$headings-margin-bottom: spacer();
 
 
 //## Grid

@@ -25,4 +25,8 @@ BuildPaths.RImagesP = path.join(BuildPaths.RSource, 'img');
 BuildPaths.RImagesD = path.join(BuildPaths.RProduction, 'img');
 BuildPaths.MImages = path.join(BuildPaths.MProduction, 'img');
 
+BuildPaths.RFontsP = path.join(BuildPaths.RSource, 'fonts');
+BuildPaths.RFontsD = path.join(BuildPaths.RProduction, 'fonts');
+BuildPaths.MFonts = path.join(BuildPaths.MProduction, 'fonts');
+
 module.exports = BuildPaths;
