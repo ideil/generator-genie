@@ -1,0 +1,18 @@
+//# Type
+//
+//*
+
+
+//## Links
+//
+//*
+
+.c-link-pseudo {
+    &:after {
+        @include link-pseudo-cover();
+    }
+}
+
+.c-link-text {
+    color: inherit;
+}

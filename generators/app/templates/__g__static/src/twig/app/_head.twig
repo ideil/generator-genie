@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<title>{{ PAGE.no ~ ' ' ~ PAGE.id ~ ' — ' ~ APP.title }}</title>
+<title>{{ PAGE.no }}{{ I_DATA matches regexInteger ? '.' ~ I_DATA }}{{ ' ' ~ PAGE.id|capitalize }}{{ P_DATA ? ' ' ~ P_DATA.name }} — {{ APP.title }}</title>
 
 <meta name="description" content="">
 <meta name="viewport" content="viewport-fit=cover, initial-scale=1, shrink-to-fit=no">
@@ -19,33 +19,33 @@
 
 {# Images Preload #}
 {# {% for image in APP.preload.img %}
-    {% include '_preload-image.twig' %}
+  {% include '_preload-image.twig' %}
 {% endfor %}
 
 {% for image in PAGE.preload.img %}
-    {% include '_preload-image.twig' %}
+  {% include '_preload-image.twig' %}
 {% endfor %}
 
 {% for image in PAGE.preload.zzz %}
-    {% include '_preload-image.twig' with { path: 'zzz' } %}
+  {% include '_preload-image.twig' with { path: 'zzz' } %}
 {% endfor %} #}
 
 {## Async CSS #}
 {% for style in APP.styles %}
-    <link rel="stylesheet" href="{{ PATH.css ~ style }}.css">
-    {# <link rel="preload" href="{{ PATH.css ~ style }}.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> #}
+  <link rel="stylesheet" href="{{ PATH.css ~ style }}.css">
+  {# <link rel="preload" href="{{ PATH.css ~ style }}.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> #}
 {% endfor %}
 {% for style in PAGE.styles %}
-    <link rel="stylesheet" href="{{ PATH.css ~ style }}.css">
-    {# <link rel="preload" href="{{ PATH.css ~ style }}.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> #}
+  <link rel="stylesheet" href="{{ PATH.css ~ style }}.css">
+  {# <link rel="preload" href="{{ PATH.css ~ style }}.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> #}
 {% endfor %}
 {## Custom Component CSS #}
 {% for style in CUSTOM.styles %}
-    <link rel="stylesheet" href="{{ PATH.css ~ style }}.css">
+  <link rel="stylesheet" href="{{ PATH.css ~ style }}.css">
 {% endfor %}
 {## Develop Component CSS #}
 {% if IS_DEV %}
-    <link rel="stylesheet" href="{{ PATH.css }}dev.css">
+  <link rel="stylesheet" href="{{ PATH.css }}dev.css">
 {% endif %}
 
 {#** No JS fallback #}
@@ -55,5 +55,5 @@
 {#<script>{% include '../../pub/js/vendor/preload.js' %}</script>#}
 
 {% if PAGE.isCritical %}
-    <!-- critical: css -->
+  <!-- critical: css -->
 {% endif %}

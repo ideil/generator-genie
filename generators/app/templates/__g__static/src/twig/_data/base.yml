@@ -3,6 +3,11 @@
 APP:
   title: 'App Title'
   lang: 'uk'
+  screen:
+    sm: 425
+    md: 768
+    lg: 1024
+    xl: 1280
   styles:
     - 'root'
     - 'bs'
@@ -32,7 +37,7 @@ PAGES:
     isCritical: false
     no: '01'
     id: 'home'
-    title: 'Homepage Title'
+    title: 'Page Title'
     # styles:
     #   - 'customs/'
     # scripts:
@@ -43,3 +48,29 @@ PAGES:
     #       src1x: '1x.jpg'
     #       src2x: '@2x.jpg'
     #       src3x: '@3x.jpg'
+
+  # publication:
+  #   isCritical: false
+  #   no: '02'
+  #   id: 'publication'
+  #   title: 'Page Title'
+  #   scripts:
+  #     - 'referrer'
+  #     - 'ticker'
+  #   type:
+  #     - name: '_Combined'
+  #       isPublic: true
+  #       # scripts:
+  #       #   - 'fileName'
+  #       # isCombined: true
+
+  #     - name: 'Base'
+  #       isPublic: true
+  #       # scripts:
+  #       #   - 'fileName'
+
+
+## Devel
+
+#* credits: https://stackoverflow.com/questions/9043551/regex-that-matches-integers-only
+regexInteger: '/^\d+$/'

@@ -23,6 +23,39 @@
 //
 //*
 
+//### SVG
+@mixin i-svg($name, $map, $isPlaceholder: false) {
+    $width: map-get($map, 'width');
+    $height: map-get($map, 'height');
+
+    $size: map-get($map, 'size');
+    @if $size {
+        $width: $size;
+        $height: $size;
+    }
+
+    $color: map-get($map, 'color');
+    @if not $color {
+        $color: $--primary;
+    }
+
+    $dir: map-get($map, 'dir');
+    @if $dir {
+        $dir: $dir + '/';
+    }
+
+    $prefix: '.';
+    @if $isPlaceholder {
+        $prefix: '%';
+    }
+
+    #{$prefix}i-#{$name} {
+        width: $width;
+        height: $height;
+        background-image: svg-load($path-svg + $dir + $name + '.svg', fill=$color);
+    }
+}
+
 //### Filters
 @mixin filter($state) {
     @if $state == 'black' {
@@ -51,49 +84,6 @@
     @if $side == 'height' {
         width: scale-size($map, $value, $side);
         height: round-to($value);
-    }
-}
-
-//### SVG
-@mixin svg($map, $el: null) {
-    $pseudoEl: map-get($map, 'el');
-    @if $el {
-        $pseudoEl: $el;
-    }
-    @if not $pseudoEl {
-        $pseudoEl: 'before';
-    }
-
-    $size: map-get($map, 'size');
-    $width: map-get($map, 'width');
-    $height: map-get($map, 'height');
-
-    $scaleSize: map-get($map, 'scaleSize');
-    $scaleWidth: map-get($map, 'scaleWidth');
-    $scaleHeight: map-get($map, 'scaleHeight');
-
-    @if $size {
-        $width: $size;
-        $height: $size;
-    }
-
-    @if $scaleSize {
-        $width: $scaleSize;
-        $height: $scaleSize;
-    }
-
-    @if $scaleWidth {
-        $width: $scaleWidth;
-        $height: $scaleHeight;
-    }
-
-    &:#{ $pseudoEl } {
-        @include unit(width, get-num($width));
-        @include unit(height, get-num($height));
-
-        content: '';
-        display: block;
-        background: url(svg-simple($map)) no-repeat 50% 50%;
     }
 }
 
@@ -150,8 +140,7 @@
 @mixin font($family, $path, $weight: $fw-normal, $style: $fw-normal) {
     @font-face {
         font-family: $family;
-        src: url($path-fonts + $path + '.woff2') format('woff2'),
-             url('../fonts/' + $path + '.woff') format('woff');
+        src: url($path-fonts + $path + '.woff2') format('woff2');
         font-weight: $weight;
         font-style: $style;
         font-display: fallback;

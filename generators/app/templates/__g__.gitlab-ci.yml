@@ -6,10 +6,14 @@ pages:
   - mkdir .public/src
   - cp -r static/src/css .public/src
   - cp -r static/src/zzz .public/src
-  - cp -r static/pub .public
+  - cp -r static/pub/img .public/src
+  # - cp -r static/pub/fonts .public/src
+  - mkdir .public/pub
+  - cp -r static/pub/js .public/pub
   - mv .public public
   artifacts:
     paths:
     - public
   only:
   - gitlab-ci
+

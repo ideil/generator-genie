@@ -4,7 +4,8 @@ IS_PUB: true
 
 PATH:
   src: '../../pub/'
-  css: '../../pub/css/'
-  img: '../../pub/img/'
+  css: '../../src/css/'
+  # cssInline: '../../pub/css/' # AMP
+  img: '../../src/img/'
   js: '../../pub/js/'
   zzz: '../../src/zzz/'

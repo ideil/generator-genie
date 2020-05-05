@@ -6,6 +6,7 @@ $MIX_IS_PUB: false !default;
 
 $path-img: '../img/';
 $path-fonts: '../fonts/';
+$path-svg: '../img/css/'; //** svg-load($path-svg + 'filename.svg')
 
 @if $MIX_IS_PUB {
     //* Image path must be relative to *.scss files to make `processCssUrls` work
@@ -18,6 +19,7 @@ $path-fonts: '../fonts/';
 //
 //*
 
+$fs-browser: 16;
 $font-smothing: true;
 
 
@@ -25,8 +27,11 @@ $font-smothing: true;
 //
 // Settings for the `<body>` element.
 
+$body-color: shade(9);
 $body-bg: $white;
-$body-color: $gray-900;
+
+$t-dark-body-color: $white;
+$t-dark-body-bg: $black;
 
 
 //## Links
@@ -39,6 +44,13 @@ $link-hover-color: darken($link-color, 15%) !default;
 $link-hover-decoration: none;
 
 
+//## Options
+//
+//*
+
+// $enable-rounded: false;
+
+
 //## Type
 //
 //*
@@ -47,6 +59,9 @@ $ff-serif: Arial;
 $font-family-base: $ff-serif, $font-family-sans-serif;
 
 //###
+$lh-base: 1.5;
+// $lh-sm: 1.2;
+$lh-xs: 1.1;
 
 $fw-thin: 100;
 $fw-light: 300;
@@ -65,6 +80,8 @@ $font-weight-bold: $fw-bold;
 
 $font-weight-base: $fw-base;
 
+// $dt-font-weight: $fw-normal;
+
 //###
 
 $fs-base: 1rem;
@@ -75,11 +92,9 @@ $font-size-base: $fs-base;
 $font-size-lg: $fs-lg;
 $font-size-sm: $fs-sm;
 
-//###
-
-$lh-base: 1.5;
-
 $line-height-base: $lh-base;
+
+//###
 
 //###
 
@@ -99,18 +114,33 @@ $h6-font-size: $fs-h6;
 
 //### Spacers
 
-$spacer: 1rem;
+$spacer: $line-height-base * $font-size-base;
 $spacers: (
   0: 0,
-  1: ($spacer * .25),
-  2: ($spacer * .5),
-  3: $spacer,
-  4: ($spacer * 1.5),
-  5: ($spacer * 3)
+  1: (1/4 * $spacer),
+  2: (1/2 * $spacer),
+  3: (1.0 * $spacer),
+  4: (1.5 * $spacer),
+  5: (2.0 * $spacer),
 );
+
+//### Misc
+// $headings-margin-bottom: spacer();
+// $headings-font-family: null !default;
+$headings-font-weight: $fw-medium;
+$headings-line-height: $lh-xs; // 1.2 !default;
+// $headings-color: null !default;
 
 $paragraph-margin-bottom: spacer();
 $headings-margin-bottom: spacer();
+
+// $hr-margin-y: spacer(5);
+
+$mark-padding: 0;
+$mark-bg: transparent;
+$mark-color: $primary;
+
+$tappable-size: 44px;
 
 
 //## Grid
@@ -118,18 +148,72 @@ $headings-margin-bottom: spacer();
 //**
 
 //### Gaps
+// $grid-gutter-width: 36px;
 
 $gap: $grid-gutter-width;
 $gaps: (
   0: 0,
-  1: ($gap * 0.25),
-  2: ($gap * 0.5),
-  3: ($gap),
-  4: ($gap * 1.5),
-  5: ($gap * 2),
+  1: (1/6 * $gap),
+  2: (1/4 * $gap),
+  3: (1/2 * $gap),
+  4: (1.0 * $gap),
+  5: (1.5 * $gap),
+  6: (2.0 * $gap),
 );
 
+
+//## Components
+//
+//*
+
+$border-width: 1px;
+$border-color: rgba($black, .1);
+
+
+//## Controls
+//
+//* Shared variables for Buttons & Forms
+
+// $input-btn-padding-y: .375rem !default;
+// $input-btn-padding-x: .75rem !default;
+// $input-btn-font-family: null !default;
+// $input-btn-font-size: $font-size-base !default;
+// $input-btn-line-height: $line-height-base !default;
+
+// $input-btn-focus-width: .2rem !default;
+// $input-btn-focus-color: rgba($component-active-bg, .25) !default;
+// $input-btn-focus-box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
+
+// $input-btn-padding-y-sm: .25rem !default;
+// $input-btn-padding-x-sm: .5rem !default;
+// $input-btn-font-size-sm: $font-size-sm !default;
+// $input-btn-line-height-sm: $line-height-sm !default;
+
+// $input-btn-padding-y-lg: .5rem !default;
+// $input-btn-padding-x-lg: 1rem !default;
+// $input-btn-font-size-lg: $font-size-lg !default;
+// $input-btn-line-height-lg: $line-height-lg !default;
+
+// $input-btn-border-width: $border-width !default;
+
+// $input-placeholder-color: $gray-600 !default;
+// $input-plaintext-color: $body-color !default;
+
+// $input-bg: $white !default;
+// $input-disabled-bg: $gray-200 !default;
+
+// $input-color: $gray-700 !default;
+// $input-border-color: $gray-400 !default;
+
+// $input-focus-color: $input-color !default;
+
+// $form-grid-gutter-width: 10px !default;
+// $form-group-margin-bottom: 1rem !default;
+
+
 //### Breakpoints
+//* Twig: '/static/src/twig/_data/base.yml'
+//* JS: '/static/src/js/_utils.js' (`ScreenMatch`)
 
 // $grid-breakpoints: (
 //   xs: 0,
@@ -154,3 +238,15 @@ $gaps: (
 //*
 
 $transition: 0.15s;
+
+
+//## Socials
+//
+//*
+
+$brand-tg: #0088cc;
+$brand-fb: #4267B2;
+$brand-fbm: #006aff;
+$brand-fbm-light: #00b2ff;
+$brand-twt: #1da1f2;
+$brand-ig: #c13584; // Dark Pink

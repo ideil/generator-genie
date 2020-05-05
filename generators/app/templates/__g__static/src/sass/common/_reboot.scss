@@ -3,6 +3,7 @@
 //*
 
 body {
+    width: 100%;
     fill: $body-color;
 
     @if $font-smothing {
@@ -12,29 +13,23 @@ body {
 }
 
 
-//## Transitions
+//## Lists
 //
 //*
 
-button,
-.btn,
-a {
-    transition:
-        color $transition,
-        background $transition,
-        border-color $transition,
-        fill $transition;
+ol,
+ul,
+dl {
+    margin-bottom: spacer();
 }
 
+li {
+    margin-bottom: spacer(2);
 
-//## Text
-//
-//*
-
-//** text selection
-// ::selection {
-//     background-color: lighten(theme-color("primary"), 50%);
-// }
+    & & {
+        margin-bottom: spacer(1);
+    }
+}
 
 
 //## Forms
@@ -53,3 +48,43 @@ textarea {
 svg {
     fill: inherit;
 }
+
+
+//## Transitions
+//
+//*
+
+.btn,
+button,
+a {
+    transition:
+        color $transition,
+        fill $transition,
+        background $transition,
+        border-color $transition,
+        opacity $transition,
+        filter $transition;
+}
+
+
+//## Text
+//
+//*
+
+//### Selection
+// ::selection {
+//     background-color: lighten(theme-color("primary"), 50%);
+// }
+
+
+//### Misc
+
+iframe {
+    display: block;
+    border: 0;
+}
+
+// mark,
+// .mark {
+//     color: $mark-color;
+// }

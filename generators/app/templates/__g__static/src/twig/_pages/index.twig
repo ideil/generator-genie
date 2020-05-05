@@ -1,0 +1,52 @@
+{% extends '../templates/_base.twig' %}
+
+{% set PAGE = PAGES.index %}
+
+{% block main %}
+  <style>
+    a:not([href]) {
+      opacity: .2;
+      pointer-events: none;
+    }
+
+    ol ul {
+      list-style: none;
+      padding: 0;
+    }
+  </style>
+
+  <div class="l-sheet">
+    <h1>{{ PAGE.title }}</h1>
+
+    <ol>
+      {% for page in PAGES %}
+        {% if loop.index > 1 %}
+          <li>
+            {% set pageSubLength = page.type.length %}
+
+            {% if pageSubLength > 1 %}
+              <ul>
+                {% for index in 0..pageSubLength - 1 %}
+                  {% set iPageSub = loop.index - 1 %}
+
+                  <li>
+                    {% include '../misc/_link.twig' with {
+                      PID: page.id,
+                      iLinkSub: iPageSub,
+                      isLinkTree: true,
+                    } %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              {% include '../misc/_link.twig' with {
+                PID: page.id,
+                isLinkTree: true,
+              } %}
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+  </div>
+{% endblock %}

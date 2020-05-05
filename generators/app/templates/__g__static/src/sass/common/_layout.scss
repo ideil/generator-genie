@@ -1,0 +1,28 @@
+//# Layout
+//
+//*
+
+$l-sheet-gap: gap();
+
+
+//## Sheet
+//
+//*
+
+.l-sheet {
+    max-width: box(sm);
+    margin: 0 auto;
+    padding: 0 $l-sheet-gap;
+
+    @include screen(md) {
+        max-width: box(md);
+    }
+
+    @include screen() {
+        max-width: box();
+    }
+
+    @include screen(xl) {
+        max-width: box(xl);
+    }
+}

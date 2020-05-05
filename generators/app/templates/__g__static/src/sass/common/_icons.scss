@@ -1,0 +1,61 @@
+//# Icons
+//
+//* https://github.com/TrySound/postcss-inline-svg/issues/46
+
+// @function svg($name) {
+//     @return svg-load($path-svg + $name);
+// }
+
+$i-dump: (
+    // _new: (
+    //     // dir: '/img/css/{{ dir }}/filename.svg',
+    //     // size: ,
+    //     width: ,
+    //     height: ,
+    //     // color: ,
+    // ),
+);
+
+@if $i-dump {
+    @each $icon, $map in $i-dump {
+        @include i-svg($icon, $map);
+    }
+}
+
+
+//## Short
+//
+//* Optimizing by Mix
+
+.i-base {
+    display: block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+// .i-_new {
+//     @include filter('black');
+
+//     display: inline-block;
+//     background-position: 0 100%;
+// }
+
+
+//## Extended
+//
+//* NOT working w/ Mix Production (css path resolver).
+//* Can't accept variable to `url()`.
+
+// @svg-load logo url('../img/logo.svg') {
+//     path {
+//         fill: green;
+
+//         &:nth-child(2) {
+//             fill: red;
+//         }
+//     }
+// }
+
+// .qa-svg-inline {
+//     background: svg-inline(logo) no-repeat 0;
+// }

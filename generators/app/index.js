@@ -1,3 +1,5 @@
+/* eslint no-underscore-dangle: [ "error", { "allow": [ __ ] } ] */
+
 'use strict';
 
 const
@@ -10,7 +12,7 @@ module.exports = class extends Generator {
         super(args, opts);
 
         this.genie = {
-            __: require(this.templatePath('__g__build/paths')),
+            __: require(this.templatePath('__g__webpack/paths')),
 
             copyAll: (Files) => {
                 Files.forEach(file => {
@@ -118,7 +120,6 @@ module.exports = class extends Generator {
                     hot: 'cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js',
                     prod: 'npm run production',
                     production: 'cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js',
-                    // watchGulp: 'MIX_N_GULP=true npm run watch & gulp',
                     build: 'MIX_IS_BUILD=true npm run development && npm run production',
                     test: 'echo "Error: no test specified"',
                 },
@@ -127,8 +128,8 @@ module.exports = class extends Generator {
         this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
 
         this.genie.copyAll([
-            'build',
             'static',
+            'webpack',
         ]);
     }
 
@@ -164,11 +165,11 @@ module.exports = class extends Generator {
         bsMain = bsMain.replace(/@import "/g, '@import "~bootstrap/scss/');
         bsMain = bsMain.replace('// @import', '@import "set/a-set";\n// @import');
 
-        this.fs.write(this.destinationPath(this.genie.__.RSass + '/bs.scss'), bsMain);
+        this.fs.write(this.destinationPath(this.genie.__.sass + '/bs.scss'), bsMain);
 
         this.fs.copy(
             this.destinationPath(bsPath + '_variables.scss'),
-            this.destinationPath(this.destinationPath(this.genie.__.RSass + '/_dump/_bs-vars.scss'))
+            this.destinationPath(this.destinationPath(this.genie.__.sass + '/_dump/_bs-vars.scss'))
         );
     }
 };

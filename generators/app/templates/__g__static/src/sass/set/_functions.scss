@@ -3,12 +3,42 @@
 //*
 
 
+//## Maps
+//
+//*
+
+@function map-deep-merge($parent-map, $child-map) {
+    $result: $parent-map;
+    @each $key, $value in $child-map {
+        @if (not map-has-key($result, $key)) or (type-of(map-get($result, $key)) != type-of($value)) or (not (type-of(map-get($result, $key)) == map and type-of($value) == map)) {
+            $result: map-merge($result, ($key: $value));
+        }
+        @else {
+            $result: map-merge($result, ($key: map-deep-merge(map-get($result, $key), $value)));
+        }
+    }
+    @return $result;
+}
+
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+
 //## Helpers
 //
 //*
 
 @function get-num($value) {
     @return $value / ($value * 0 + 1);
+}
+
+@function rem($value, $factor: 1) {
+    @return 1/$fs-browser * get-num($value) * 1rem * $factor;
 }
 
 @function percentage($value, $points: 1) {
@@ -76,74 +106,30 @@
 }
 
 
-//## Typography & Grid
+//## Type & Grid
 //
 //*
 
+//### Type
+@function spacer($key: null, $factor: 1) {
+    @if not $key {
+        $key: 3;
+    }
+
+    @return map-get($spacers, $key) * $factor;
+}
+
+//### Grid
 @function box($key: lg) {
     @return map-get($container-max-widths, $key);
 }
 
-@function gap($key: 2, $factor: 1) {
+@function gap($key: null, $factor: 1) {
+    @if not $key {
+        $key: 3;
+    }
+
     @return map-get($gaps, $key) * $factor;
-}
-
-@function spacer($key: 2, $factor: 1) {
-    @return map-get($spacers, $key) * $factor;
-}
-
-@function fs-h($index) {
-    @return map-get($headings-font-size, $index);
-}
-
-
-//## Graphics
-//
-//*
-
-@function svg-to-css($html) {
-    @return str-replace(
-        str-replace(
-            str-replace(
-                'data:image/svg+xml;charset=utf8,' + $html,
-                '#', '%23'
-            ),
-            '>', '%3E'
-        ),
-        '<', '%3C'
-    );
-}
-
-@function svg-base($content, $width, $height) {
-    @return svg-to-css("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 #{ get-num($width) } #{ get-num($height) }'>#{ $content }</svg>");
-}
-
-@function svg-simple($map, $color: null, $path: null) {
-    $size: map-get($map, 'size');
-    $width: null;
-    $height: null;
-
-    @if $size {
-        $width: get-num($size);
-        $height: get-num($size);
-    } @else {
-        $width: get-num(map-get($map, 'width'));
-        $height: get-num(map-get($map, 'height'));
-    }
-
-    @if not $path {
-        $path: map-get($map, 'path');
-    }
-
-    @if not $color {
-        $color: map-get($map, 'color');
-    }
-
-    @if not $color {
-        $color: $i-color-base;
-    }
-
-    @return svg-to-css("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 #{ $width } #{ $height }'><path d='#{ $path }' fill='#{ $color }'/></svg>");
 }
 
 
