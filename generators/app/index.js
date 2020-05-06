@@ -148,7 +148,10 @@ module.exports = class extends Generator {
 
         this.npmInstall(Packages, { 'save-dev': true });
 
-        this.npmInstall(['bootstrap']);
+        this.npmInstall([
+            'bootstrap',
+            'focus-visible',
+        ]);
     }
 
     end() {
