@@ -139,6 +139,8 @@ module.exports = class extends Generator {
                 'cross-env',
                 'eslint-config-crockford',
                 'imagemin-webpack-plugin',
+                'postcss-inline-svg',
+                'postcss-focus-visible',
                 'laravel-mix',
                 'laravel-mix-purgecss',
                 'laravel-mix-twig',
